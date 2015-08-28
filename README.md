@@ -39,7 +39,7 @@ _{Ruby, POSTGRESS, SQL, Capybara, Sinatra, RSpec, ActiveRecord, Rake.}_
 
 ### Legal
 
-*{This is boilerplate legal language. Read through it, and if you like it, use it. There are other license agreements online, but you can generally copy and paste this.}*
+*{Boilerplate legal language.}*
 
 Copyright (c) 2015 **_{Carlo De Gregorio}_**
 
