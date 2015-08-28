@@ -1,0 +1,21 @@
+<h1>BANDS</h1>
+
+<% if @bands.any?() %>
+<p>Bands: </p>
+
+<ul class="nav nav-pills nav-stacked">
+  <% @bands.each() do |band| %>
+  <li class="active"><a href=""><%= band.name() %></a></li>
+  <% end %>
+</ul>
+
+<% else %>
+
+<h3 class="text-primary">
+  <strong>The day the music died...</strong>
+</h3>
+
+<form action="/new_band" method="post">
+  <input id="new_band" name="new_band" type="text" placeholder="Edward Scissorhands" >
+  <button type="submit" class="btn-danger">Add a Band!</button>
+</form>
