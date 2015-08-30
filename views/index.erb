@@ -1,34 +1,66 @@
 <div class="jumbotron">
-  <h1>Band - Venue Tracker</h1>
+  <div class="container-fluid">
+    <h1>Band - Venue Tracker</h1>
+    <% if @bands.any?() %>
+    <p>My bands:</p>
+    <ul class="nav nav-pills nav-stacked">
+      <% @bands.each() do |band| %>
+        <li class="active"><a href=""><%= band.name() %></a></li>
+      <% end %>
+    </ul>
 
-  <% if @bands.any?() %>
-  <p>My bands:</p>
+    <% else %>
 
-  <ul class="nav nav-pills nav-stacked">
-    <% @bands.each() do |band| %>
-    <li class="active"><a href=""><%= band.name() %></a></li>
-    <% end %>
-  </ul>
+    <div class="alert alert-dismissible alert-danger">
+      <h4><strong>The day the music died...</strong></h4>
+      <h3 class="text-primary">
+        <strong></strong>
+      </h3>
+    </div>
+  </div>
+      <% end %>
+</div>
+
+<div class="container-fluid">
+  <form class="form-horizontal" action="/new_band" method="post">
+    <fieldset>
+      <p class='text-muted'>Add a band: </p>
+      <label for="name">Band</label>
+      <input type="text" name="name" id="name" placeholder="Flock of Seagulls">
+      <button class="btn btn-primary" type="submit">ADD BAND</button>
+    </fieldset>
+  </form>
+</div>
+
+<div class="well">
+<div class="container-fluid">
+  <form class="form-horizontal" action="/new_venue" method="post">
+    <fieldset>
+      <p class="text-muted">Add a venue: </p>
+      <label for="place">Venue</label>
+      <input type="text" name="place" id="place" placeholder="Wimbledon">
+      <button id="" class="btn btn-info" type="submit">ADD VENUE</button>
+    </fieldset>
+  </form>
+</div>
+</div>
+
+<div class="well">
+  <% if @venues.any?() %>
+  <p>Concert Venues</p>
+  <div class="list-group">
+    <ul>
+      <% @venues.each() do |venue| %>
+        <li class="active list-group-item"><a href="#"><%= venue.place() %></a></li>
+      <% end %>
+    </ul>
+  </div>
   <% else %>
-
   <div class="alert alert-dismissible alert-danger">
-  <h4><strong>The day the music died...</strong></h4>
-  <h3 class="text-primary">
-    <strong></strong>
-  </h3>
-
+    <h4><strong>The day the music died...</strong></h4>
+    <h3 class="text-primary">
+      <strong></strong>
+    </h3>
+  </div>
+    <% end %>
 </div>
-
-<% end %>
-
-</div>
-
-
-<form class="form-horizontal" action="/new_band" method="post">
-  <fieldset>
-    <p class='text-muted'>Add a band: </p>
-    <label for="name">Band</label>
-    <input type="text" name="name" id="name" placeholder="Flock of Seagulls">
-    <button class="btn btn-primary" type="submit">ADD BAND</button>
-  </fieldset>
-</form>
