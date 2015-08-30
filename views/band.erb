@@ -1,6 +1,6 @@
 <h1>BANDS</h1>
 
-<% if @bands.any?() %>
+<!-- <% if @bands.any?() %>
 <p>Bands: </p>
 
 <ul class="nav nav-pills nav-stacked">
@@ -19,3 +19,62 @@
   <input id="new_band" name="new_band" type="text" placeholder="Edward Scissorhands" >
   <button type="submit" class="btn-danger">Add a Band!</button>
 </form>
+<div class="container-fluid"> -->
+
+
+  <h3><%= @band.name() %></h3>
+    <%if @band.venues.any?() %>
+      <% venues = @band.venues() %>
+        <% venues.each() do |venue| %>
+        <%= venue.description() %>
+          <form action="/bands/<%= @band.id() %>/venues/<%= venue.id() %>" method="post" >
+            <input type="hidden" value="delete"  name="_method">
+            <button class='btn btn-warning btn-xs' type='submit'>Untag!</button>
+          </form>
+        <%end %>
+    <% else %>
+      <h5> Add venues to this band </h5>
+    <% end %>
+
+      <div class="well">
+        <form class="form-horizontal" action= "/bands/<%= @band.id() %>" method="post">
+          <fieldset>
+            <legend></legend>
+            <div class="form-group">
+              <label for="description" class="col-lg-2 control-label">Make your own!</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" name="description" id="description" placeholder="ex: Rustic, Fall, Romance, Bromance">
+                <button name="button" class="btn btn-primary">Tag It</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <form  action="/bands/<%= @band.id() %>" method="post">
+        <input name="_method" type="hidden" value="patch">
+        <label for="name">Edit this Band:</label>
+        <input name="name" type="text">
+        <button type="submit">Tune it</button>
+      </form>
+
+
+      <div class="well">
+        <form class="form-horizontal" action= "/bands/<%= @band.id() %>" method="post">
+          <fieldset>
+            <legend>Add a Band Website </legend>
+            <div class="form-group">
+              <label for="description" class="col-lg-2 control-label">Play that funky music!</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" name="address" id="address" placeholder="ex: https:// ">
+                <button name="button" class="btn btn-primary">Link It!</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+
+
+    <a href="/">Return to Home</a>
+</div>
